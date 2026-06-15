@@ -6,7 +6,7 @@ Open this when classifying risk, preparing handoff notes, writing review finding
 
 - Deterministic rule changes with tests or lint coverage.
 - Small internal refactors that preserve public behavior.
-- Focused bug fixes with a repro test.
+- Focused bug fixes with a behavioral regression test.
 - Documentation routing updates that do not change product behavior.
 
 ## Human-On-Contract
