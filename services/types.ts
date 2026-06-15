@@ -79,8 +79,11 @@ export type ModelCoverage = {
 
 export type VisibilitySnapshot = {
   score: number;
+  preciseScore: number;
   citationScore: number;
+  preciseCitationScore: number;
   crawlerScore: number;
+  preciseCrawlerScore: number;
   positiveShare: number;
   history: readonly VisibilityHistoryPoint[];
 };
