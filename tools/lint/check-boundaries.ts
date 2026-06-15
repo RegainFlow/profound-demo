@@ -18,6 +18,14 @@ for (const file of await listFiles(frontendRoot)) {
     violations.push(`${relative}: frontend files must not import service modules`);
   }
 
+  if (/style=\{\{/.test(source) && !relative.startsWith('frontend/src/design-system/')) {
+    violations.push(`${relative}: feature and component UI must use design-system classes instead of inline styles`);
+  }
+
+  if (/#[0-9a-fA-F]{3,8}\b/.test(source) && !relative.startsWith('frontend/src/design-system/')) {
+    violations.push(`${relative}: feature and component UI must use design tokens instead of raw color literals`);
+  }
+
   if (/from ['"].*\/tokens['"]/.test(source) && !relative.startsWith('frontend/src/design-system/')) {
     violations.push(`${relative}: design tokens should be wrapped by design-system primitives for feature code`);
   }

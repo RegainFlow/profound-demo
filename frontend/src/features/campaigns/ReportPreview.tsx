@@ -1,12 +1,13 @@
-import type { Campaign } from '../../api';
+import type { Campaign, CampaignExportPayload } from '../../api';
 import { HumanReviewBadge } from '../../components';
 import { Card } from '../../design-system';
 
 type ReportPreviewProps = {
   campaign: Campaign;
+  preview: CampaignExportPayload | null;
 };
 
-export function ReportPreview({ campaign }: ReportPreviewProps) {
+export function ReportPreview({ campaign, preview }: ReportPreviewProps) {
   return (
     <Card className="report-preview">
       <div>
@@ -17,9 +18,10 @@ export function ReportPreview({ campaign }: ReportPreviewProps) {
           intentionally routed to human review before customer use.
         </p>
       </div>
-      <div style={{ background: '#7c3aed', borderRadius: '999px', color: '#ffffff', padding: '8px 12px' }}>
-        {campaign.riskTier}
-      </div>
+      <HumanReviewBadge riskTier={campaign.riskTier} />
+      <pre aria-label="JSON report preview" className="json-preview" data-testid="json-preview">
+        {preview ? JSON.stringify(preview, null, 2) : 'Loading JSON preview...'}
+      </pre>
     </Card>
   );
 }
