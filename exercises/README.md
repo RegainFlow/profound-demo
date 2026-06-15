@@ -9,7 +9,7 @@ Structure:
 - `artifacts/` mirrors the repo files introduced or changed during the lesson.
 
 The `artifacts/` tree is intentionally allowed to contain paths such as `.agents/`,
-`docs/`, `tools/`, and `templates/`. It is not a second source of
+`.agents/docs/`, `tools/`, and `templates/`. It is not a second source of
 truth; it is the lesson payload showing what gets added to the real repo at that
 checkpoint.
 
@@ -20,7 +20,7 @@ the native automation setup and expected behavior instead.
 
 | Exercise | Branch beat | Known bug | Known fix | Harness lesson |
 | --- | --- | --- | --- | --- |
-| `01` | `demo-1-foundation` | Codex has no shared Profound context. | Add AGENTS hierarchy and canonical docs. | Repo-local context creates horizontal alignment without mandating one tool. |
+| `01` | `demo-1-foundation` | Codex has no shared Profound context. | Add AGENTS hierarchy and agent operating docs. | Repo-local context creates horizontal alignment without mandating one tool. |
 | `02` | `demo-2-loop` | A ticket can turn into a broad vibe-coded diff. | Use ticket -> plan -> scoped change -> focused test. | The loop makes autonomous work reviewable. |
 | `03` | `demo-3-boundaries-and-tests` | Decorative tests pass while API/design/cache bugs survive. | Add boundary checks, behavior tests, and cache invalidation. | Mechanically checkable feedback belongs in the gate. |
 | `04` | `demo-4-feedback-rule` | Repeated review comments stay trapped in chat. | Promote feedback into local/Semgrep-style rules. | Durable rules retire repeated corrections. |

@@ -6,24 +6,45 @@ on:
   workflow_dispatch:
 
 jobs:
-  deterministic-gate:
-    name: deterministic gate
+  static:
+    name: static
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
+          cache: npm
       - run: npm ci
-      - run: npm run lint
-      - run: npm test
-      - run: npm run e2e
+      - run: npm run typecheck
+      - run: npm run lint:static
+      - run: npm run lint:boundaries
 
-  review-policy:
-    name: review policy reminder
+  tests:
+    name: tests
     runs-on: ubuntu-latest
-    needs: deterministic-gate
+    needs: static
     steps:
-      - run: |
-          echo "Run Codex first-pass review with .agents/skills/first-pass-review/SKILL.md."
-          echo "Humans remain final gate for customer-facing UI, public API, security, data-loss, and design-sensitive work."
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run test:backend
+      - run: npm run test:services
+
+  web:
+    name: web
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build:web
+      - run: npm run e2e

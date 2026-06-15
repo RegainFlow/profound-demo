@@ -5,6 +5,8 @@ canon: true
 
 # Backend Instructions
 
+- Open `.agents/docs/api-contract.md` for route, response-shape, CSV, and report payload changes.
+- Open `.agents/docs/testing-philosophy.md` before fixing backend behavior.
 - Route handlers may call service modules; frontend files may not call services directly.
 - Keep response shapes stable and documented by tests.
 - CSV exports must include explicit headers and escape user-visible text.
