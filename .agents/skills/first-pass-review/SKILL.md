@@ -29,5 +29,5 @@ Return:
 ## Profound Workshop Examples
 
 - Citation export: human-on-contract, because export fields are a customer-visible data contract.
-- Visibility cache invalidation: agent-gated if the focused repro test and gate pass.
+- Visibility cache invalidation: agent-gated if the focused behavioral test and gate pass.
 - Chart palette or report preview: human-mandatory because it is customer-facing design.
