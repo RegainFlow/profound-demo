@@ -34,9 +34,16 @@ Run the narrowest relevant command first, then `npm run gate` before declaring t
 Useful commands:
 
 ```powershell
+npm run typecheck
+npm run lint:static
+npm run lint:boundaries
+npm run test:backend
+npm run test:services
+npm run build:web
+npm run e2e
 npm test
 npm run lint
-npm run e2e
+npm run check
 npm start
 ```
 

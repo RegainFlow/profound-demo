@@ -19,6 +19,9 @@ Open this before fixing bugs, changing behavior, updating boundaries, or touchin
 
 ## Checks
 
-- Service/backend behavior: `npm test`
-- Static policy: `npm run lint`
+- Backend HTTP behavior: `npm run test:backend`
+- Service behavior: `npm run test:services`
+- Static policy: `npm run lint:static`
+- Frontend boundary policy: `npm run lint:boundaries`
 - Visible regression: `npm run e2e`
+- Full behavior suite: `npm test`
