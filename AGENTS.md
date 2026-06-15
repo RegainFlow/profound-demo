@@ -12,7 +12,7 @@ This repository is a Codex workshop kit, not a production Profound system. Prese
 Read this file first, then open the narrow doc that matches the task:
 
 - Product/API work: `docs/api-contract.md`
-- Frontend or visual work: `docs/brand-rules.md`
+- Frontend or visual work: `frontend/AGENTS.md` and `docs/brand-rules.md`
 - Test changes: `docs/testing-philosophy.md`
 - Review or risk routing: `docs/review-policy.md`
 - PR shape and branch-stack work: `docs/pr-conventions.md`

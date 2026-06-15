@@ -15,5 +15,5 @@
     "target": "ES2022",
     "types": ["vite/client"]
   },
-  "include": ["src"]
+  "include": ["frontend/src"]
 }

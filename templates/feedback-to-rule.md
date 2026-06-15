@@ -7,7 +7,7 @@ Human feedback:
 Codex prompt:
 
 ```text
-Turn this repeated PR comment into a deterministic local check. Prefer the existing lint/check tooling. The rule should fail when frontend files other than `src/api/client.ts` call `fetch()` directly.
+Turn this repeated PR comment into a deterministic local check. Prefer the existing lint/check tooling. The rule should fail when frontend files other than `frontend/src/api/client.ts` call `fetch()` directly.
 ```
 
 Expected artifact:

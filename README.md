@@ -37,7 +37,7 @@ npm run gate
 
 The gate runs static policy checks, boundary checks, Node tests, and an E2E smoke check. If Playwright is installed, `npm run e2e` uses a real browser; otherwise it falls back to HTTP checks so the workshop is still runnable offline.
 
-The frontend is a Vite React TypeScript app. `src/api/` is the only frontend backend contract, and `src/design-system/` owns reusable brand primitives.
+The repo is shaped like a small monorepo for the workshop: `frontend/` is the Vite React app, `backend/` serves the synthetic API and built app, and `services/` owns deterministic business rules/data. `frontend/src/api/` is the only frontend backend contract, and `frontend/src/design-system/` owns reusable brand primitives.
 
 ## Leave-Behind Kit
 

@@ -4,7 +4,7 @@ Human: Do not fetch answer-engine data from a component. Use the frontend data l
 
 Codex: I moved the fetch into the component because it was the shortest path.
 
-Human: That makes the component own integration details. Use `src/api/`.
+Human: That makes the component own integration details. Use `frontend/src/api/`.
 
 Codex: Fixed.
 

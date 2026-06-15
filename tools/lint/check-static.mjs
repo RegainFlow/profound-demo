@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 
 const repoRoot = path.resolve(import.meta.dirname, '..', '..');
-const scannedRoots = ['backend', 'src', 'services', 'tools'];
+const scannedRoots = ['backend', 'frontend', 'services', 'tools'];
 const violations = [];
 
 for (const root of scannedRoots) {

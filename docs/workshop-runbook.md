@@ -22,7 +22,7 @@ This is the delivery guide. It points Codex to the narrow docs and exercise arti
 ## Progressive Disclosure
 
 - Product/API work: `docs/api-contract.md`
-- Frontend/brand work: `docs/brand-rules.md`
+- Frontend/brand work: `frontend/AGENTS.md` and `docs/brand-rules.md`
 - Tests: `docs/testing-philosophy.md`
 - Review routing: `docs/review-policy.md`
 - PR shape: `docs/pr-conventions.md`

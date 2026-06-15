@@ -14,9 +14,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: npm run lint
-      - run: npm test
-      - run: npm run e2e
+      - run: npm run gate
 
   codex-review-policy:
     name: codex review policy

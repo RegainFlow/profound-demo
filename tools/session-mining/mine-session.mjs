@@ -9,7 +9,7 @@ const candidates = [
     title: 'Block frontend fetches outside the data layer',
     type: 'deterministic rule',
     owner: 'frontend-lead',
-    evidence: count(session, 'src/api') + count(session, 'API contract'),
+    evidence: count(session, 'frontend/src/api') + count(session, 'API contract'),
     artifact: 'tools/lint/check-boundaries.mjs already enforces this pattern.'
   },
   {
