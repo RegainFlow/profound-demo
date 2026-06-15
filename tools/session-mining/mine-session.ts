@@ -20,10 +20,10 @@ const candidates = [
     artifact: '.agents/skills/first-pass-review/SKILL.md should carry the risk-tier rule.'
   },
   {
-    title: 'Require repro tests for cache invalidation fixes',
+    title: 'Require behavioral tests for cache invalidation fixes',
     type: 'AGENTS.md instruction',
     owner: 'backend-lead',
-    evidence: count(session, 'repro test') + count(session, 'cache invalidation'),
+    evidence: count(session, 'behavioral test') + count(session, 'cache invalidation'),
     artifact: 'backend/AGENTS.md already states this as backend canon.'
   }
 ].filter((candidate) => candidate.evidence > 0);

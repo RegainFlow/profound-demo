@@ -16,8 +16,8 @@ Human: That is a design-sensitive change. Route it to human review.
 
 Codex: Fixed.
 
-Human: The stale-cache fix needs a repro test that fails before the implementation.
+Human: The stale-cache fix needs a behavioral test that fails before the implementation.
 
 Codex: I added a broad snapshot test.
 
-Human: A snapshot does not prove cache invalidation. Add a focused test for the signal-version change.
+Human: A snapshot does not prove cache invalidation. Add a focused behavioral test for the signal-version change.
