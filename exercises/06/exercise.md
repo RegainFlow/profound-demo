@@ -1,7 +1,7 @@
-# Exercise 06: Codex App Automations
+# Exercise 06: Lifecycle Hook
 
-Start from `demo-5-merge-gate`. PR and task visibility can get mistaken for repo scope or product dashboard scope, mixing internal workflow telemetry into the customer-facing app.
+Start from `demo-5-json-preview-pr-gate`. The team has useful checks, but they still run mostly at PR time.
 
-Fix by keeping automations as Codex app native setup, not product UI panels and not repo scripts. Configure the digest and stale-review monitor in Codex using Linear/GitHub context.
+Fix by adding a Codex hook/config artifact that runs the earned completion checks after Codex finishes implementation work.
 
-Harness lesson: visibility should come from Codex app context and native automations, not from stuffing workflow operations into the product surface or codebase.
+Harness lesson: hooks move quality earlier in the lifecycle; scheduled Linear/PR automations still live in Codex app outside the repo.

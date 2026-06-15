@@ -6,5 +6,5 @@ rules:
     pattern: <$TAG style={{...}} ... />
     paths:
       include:
-        - "src/components/**/*.tsx"
-        - "src/features/**/*.tsx"
+        - "frontend/src/components/**/*.tsx"
+        - "frontend/src/features/**/*.tsx"

@@ -1,7 +1,7 @@
-# Exercise 03: Boundaries And Behavior Tests
+# Exercise 03: Architecture Rule
 
-Start from `demo-2-loop`. The app can pass decorative tests while feature code bypasses `frontend/src/api/`, uses one-off styling, or hides a stale visibility cache.
+Start from `demo-2-tests`. The app now has useful scoring tests, but feature code can still bypass `frontend/src/api/` with raw `fetch()`.
 
-Fix by adding deterministic boundary checks and behavior tests, then fixing the raw fetch, inline style, and cache invalidation defects they expose.
+Fix by adding deterministic boundary checks and runnable Semgrep coverage, then routing feature data access through the typed API client.
 
-Harness lesson: if a rule is mechanically checkable, put it in the gate. Tests are executable intent for a no-PRD engineering culture.
+Harness lesson: if a rule is mechanically checkable, put it in the gate instead of spending agent context on it.

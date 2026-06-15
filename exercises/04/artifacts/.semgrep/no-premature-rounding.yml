@@ -1,0 +1,11 @@
+rules:
+  - id: no-premature-visibility-rounding
+    message: "Visibility scoring must preserve precision until display/export boundaries."
+    severity: WARNING
+    languages: [typescript, javascript]
+    pattern-either:
+      - pattern: const $S = Math.round($EXPR);
+      - pattern: let $S = Math.round($EXPR);
+    paths:
+      include:
+        - "services/visibility-service.ts"

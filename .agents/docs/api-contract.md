@@ -15,6 +15,8 @@ Open this before changing backend routes, frontend API clients, service data sha
 - Feature components import typed API helpers, not `services/` modules or raw URLs.
 - Add compatibility aliases only when they support an exercise checkpoint or demo beat.
 - CSV and report exports must keep explicit, tested fields and escaping.
+- JSON report preview uses the existing campaign export payload and must be fetched through `frontend/src/api/`.
+- Visibility score payloads may expose display values and precise internal values; round only at the display/export boundary.
 
 ## Checks
 

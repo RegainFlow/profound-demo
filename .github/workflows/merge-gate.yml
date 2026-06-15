@@ -15,10 +15,15 @@ jobs:
         with:
           node-version: '24'
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - run: npm ci
+      - run: python -m pip install semgrep
       - run: npm run typecheck
       - run: npm run lint:static
       - run: npm run lint:boundaries
+      - run: npm run scan
 
   tests:
     name: tests

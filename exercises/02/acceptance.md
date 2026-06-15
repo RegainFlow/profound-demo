@@ -1,15 +1,15 @@
-# Acceptance 02: Scoped Ticket Loop
+# Acceptance 02: Better Behavioral Tests
 
 Expected outcome:
 
-- The selected Linear ticket lives in Linear, not in this repo, and maps to one visible product behavior.
-- The implementation touches the product surface and only the supporting API/service code it needs.
-- A focused behavior test proves the change.
-- `exercises/02/artifacts/` mirrors the scoped-loop guidance and test artifact for the lesson.
+- Testing policy rejects decorative tests.
+- `write-tests` skill exists for improving weak tests into behavioral coverage.
+- Visibility scoring tests prove precision is preserved until display/export boundaries.
+- The premature rounding bug is fixed.
+- `exercises/02/artifacts/` mirrors the testing policy and skill artifacts for the lesson.
 
 Verification:
 
 ```powershell
 npm test
-npm run e2e
 ```

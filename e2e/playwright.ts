@@ -20,6 +20,7 @@ async function runBrowserCheck(url: string): Promise<void> {
     const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await assertDashboardLoads(page, url);
     await assertApiBackedData(page, url);
+    await assertJsonPreview(page);
     await assertCsvExportControl(page);
   } finally {
     await closeBrowser(browser);
@@ -47,6 +48,16 @@ async function assertApiBackedData(page: Page, url: string): Promise<void> {
 
 async function assertCsvExportControl(page: Page): Promise<void> {
   await page.getByTestId('csv-export').click();
+}
+
+async function assertJsonPreview(page: Page): Promise<void> {
+  const preview = page.getByTestId('json-preview');
+  await preview.waitFor();
+  const text = await preview.textContent();
+
+  if (!text?.includes('"reportTone": "customer-facing"')) {
+    throw new Error('JSON report preview did not render the customer-facing export payload');
+  }
 }
 
 async function closeBrowser(browser: Browser): Promise<void> {

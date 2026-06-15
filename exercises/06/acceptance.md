@@ -1,15 +1,17 @@
-# Acceptance 06: Automations Stay Out Of Product UI
+# Acceptance 06: Lifecycle Hook
 
 Expected outcome:
 
 - The React app does not render Linear tasks, PR queues, or daily digest panels.
 - No `automations/` folder or repo-owned digest script exists.
 - No mock Linear/GitHub context server exists in the repo.
-- The runbook frames these as Codex app automation exercises.
-- `exercises/06/artifacts/` mirrors only supporting docs/templates, not native Codex app state.
+- Hook docs explain that `npm run gate` is the comprehensive completion check.
+- The hook artifact is present as a copyable Codex config example.
+- Linear/PR digest automations are mentioned only as Codex app setup outside the repo.
 
 Verification:
 
 ```powershell
 npm test
+npm run gate
 ```

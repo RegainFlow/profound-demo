@@ -1,7 +1,10 @@
 export type VisibilitySnapshot = {
   score: number;
+  preciseScore: number;
   citationScore: number;
+  preciseCitationScore: number;
   crawlerScore: number;
+  preciseCrawlerScore: number;
   positiveShare: number;
   history: Array<{ day: string; score: number }>;
 };
@@ -53,4 +56,9 @@ export type Campaign = {
   citedPages: number;
   reportTone: 'internal' | 'customer-facing';
   exportFields: string[];
+};
+
+export type CampaignExportPayload = {
+  generatedAt: string;
+  campaign: Partial<Pick<Campaign, 'name' | 'status' | 'visibilityLift' | 'citedPages' | 'riskTier' | 'reportTone'>>;
 };
