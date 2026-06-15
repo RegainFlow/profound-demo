@@ -17,7 +17,7 @@ const candidates = [
     type: 'skill',
     owner: 'design-lead',
     evidence: count(session, 'human review') + count(session, 'design-sensitive'),
-    artifact: '.agents/skills/first-pass-review/SKILL.md should carry the risk-tier rule.'
+    artifact: '.agents/docs/brand-rules.md and .agents/docs/pr-conventions.md should carry the human-review rule.'
   },
   {
     title: 'Require behavioral tests for cache invalidation fixes',
