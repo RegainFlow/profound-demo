@@ -5,6 +5,7 @@ canon: true
 
 # Services Instructions
 
+- Open `.agents/docs/project-layout.md` and `.agents/docs/visibility-scoring.md` before changing visibility score math.
 - Open `.agents/docs/api-contract.md` for data-shape, export, and report payload changes.
 - Service modules own business rules and synthetic integration data.
 - Keep functions pure where possible so Codex can test behavior without standing up the server.
