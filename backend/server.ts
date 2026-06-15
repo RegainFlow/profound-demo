@@ -1,5 +1,5 @@
 import { createReadStream } from 'node:fs';
-import { access, readFile } from 'node:fs/promises';
+import { access } from 'node:fs/promises';
 import { createServer as createHttpServer } from 'node:http';
 import type { IncomingMessage, Server, ServerResponse } from 'node:http';
 import path from 'node:path';
@@ -155,12 +155,6 @@ export function createRequestHandler(): (request: IncomingMessage, response: Ser
         }
 
         sendJson(response, payload);
-        return;
-      }
-
-      if (url.pathname === '/api/workshop/run-of-show') {
-        const runbook = await readFile(path.join(repoRoot, '.agents', 'docs', 'workshop-runbook.md'), 'utf8');
-        sendText(response, runbook, 'text/markdown; charset=utf-8');
         return;
       }
 

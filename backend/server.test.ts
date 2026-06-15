@@ -77,16 +77,6 @@ describe('workshop server', () => {
     });
   });
 
-  it('serves the workshop run of show from agent docs', async () => {
-    await withServer(async ({ url }) => {
-      const response = await fetch(`${url}/api/workshop/run-of-show`);
-      const text = await response.text();
-
-      assert.equal(response.status, 200);
-      assert.match(text, /# Workshop Runbook/);
-      assert.match(text, /demo-1-foundation/);
-    });
-  });
 });
 
 async function responseJsonRecord(response: Response): Promise<JsonRecord> {
