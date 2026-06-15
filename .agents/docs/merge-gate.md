@@ -13,6 +13,7 @@ npm run lint:boundaries
 npm run test:backend
 npm run test:services
 npm run build:web
+npm run e2e:install
 npm run e2e
 ```
 
@@ -31,7 +32,8 @@ npm run check
 - `npm run lint:boundaries`: frontend API and design-system boundary checks.
 - `npm test`: backend and service behavior via `test:backend` and `test:services`.
 - `npm run build:web`: Vite production build.
-- `npm run e2e`: browser proof when Playwright is available, HTTP smoke proof otherwise.
+- `npm run e2e:install`: install Playwright Chromium for local browser proof.
+- `npm run e2e`: required Playwright browser proof.
 - `npm run check`: Basis-style alias for the full gate.
 
 ## Human Gates

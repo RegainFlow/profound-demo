@@ -35,7 +35,7 @@ Linear tickets and PR/task digests are prepared in Linear/Codex directly for the
 npm run gate
 ```
 
-The gate runs static policy checks, boundary checks, Node tests, and an E2E smoke check. If Playwright is installed, `npm run e2e` uses a real browser; otherwise it falls back to HTTP checks so the workshop is still runnable offline.
+The gate runs static policy checks, boundary checks, Node tests, and a Playwright browser E2E check. Run `npm run e2e:install` once on a new machine to install Chromium before running the gate.
 
 The repo is shaped like a small monorepo for the workshop: `frontend/` is the Vite React app, `backend/` serves the synthetic API and built app, and `services/` owns deterministic business rules/data. `frontend/src/api/` is the only frontend backend contract, and `frontend/src/design-system/` owns reusable brand primitives. The code-facing rules for those boundaries live in `.agents/docs/`.
 

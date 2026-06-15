@@ -18,7 +18,8 @@
     "lint": "npm run lint:static && npm run lint:boundaries",
     "gate": "npm run typecheck && npm run lint && npm test && npm run build:web && npm run e2e",
     "check": "npm run gate",
-    "e2e": "tsx e2e/playwright-optional.ts",
+    "e2e:install": "playwright install chromium",
+    "e2e": "tsx e2e/playwright.ts",
     "session-mine": "tsx tools/session-mining/mine-session.ts"
   },
   "engines": {
@@ -35,6 +36,7 @@
     "@types/node": "^25.9.3",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "playwright": "^1.61.0",
     "tsx": "^4.22.4"
   },
   "overrides": {

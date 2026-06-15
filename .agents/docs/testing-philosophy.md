@@ -7,7 +7,7 @@ Open this before fixing bugs, changing behavior, updating boundaries, or touchin
 - `backend/server.test.ts` covers HTTP routes and served API behavior.
 - `services/*.test.ts` covers deterministic business rules, cache invalidation, CSV export, and campaign report payloads.
 - `tools/lint/*.ts` covers architectural rules that should not rely on repeated review comments.
-- `e2e/playwright-optional.ts` covers visible app/API smoke proof.
+- `e2e/playwright.ts` covers visible app/API smoke proof.
 
 ## Rules
 
@@ -23,5 +23,6 @@ Open this before fixing bugs, changing behavior, updating boundaries, or touchin
 - Service behavior: `npm run test:services`
 - Static policy: `npm run lint:static`
 - Frontend boundary policy: `npm run lint:boundaries`
+- Install browser: `npm run e2e:install`
 - Visible regression: `npm run e2e`
 - Full behavior suite: `npm test`
