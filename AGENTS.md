@@ -11,9 +11,10 @@ This repository is a Codex workshop kit, not a production Profound system. Prese
 
 Read this file first, then open the narrow doc that matches the task:
 
+- Repo layout or ownership questions: `.agents/docs/project-layout.md`
 - Backend/API or data-shape work: `backend/AGENTS.md`, `services/AGENTS.md`, `.agents/docs/api-contract.md`
 - Frontend, visual, or report-preview work: `frontend/AGENTS.md`, `.agents/docs/brand-rules.md`
-- Visibility score, report band, or score export changes: `.agents/docs/visibility-scoring.md`
+- Visibility score, report band, or score export changes: `.agents/docs/project-layout.md`, `.agents/docs/visibility-scoring.md`
 - PR shape or merge readiness: `.agents/docs/pr-conventions.md`
 
 ## Working Rules
