@@ -1,0 +1,13 @@
+diff --git a/frontend/src/features/dashboard/DashboardPage.tsx b/frontend/src/features/dashboard/DashboardPage.tsx
+--- a/frontend/src/features/dashboard/DashboardPage.tsx
++++ b/frontend/src/features/dashboard/DashboardPage.tsx
+@@
+-import { useEffect } from 'react';
+-
+ import type { ModelCoverage, VisibilitySnapshot } from '../../api';
+@@
+-  useEffect(() => {
+-    void fetch('/api/visibility/weights').then((response) => response.json());
+-  }, []);
+-
+   return (

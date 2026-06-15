@@ -1,0 +1,137 @@
+diff --git a/.agents/AGENTS.md b/.agents/AGENTS.md
+--- a/.agents/AGENTS.md
++++ b/.agents/AGENTS.md
+@@
+- Route repo-layout, scoring, and test-writing questions through `.agents/docs/` and `.agents/skills/`.
++- Route repo-layout, scoring, API, and test-writing questions through `.agents/docs/` and `.agents/skills/`.
+diff --git a/.agents/docs/api-contract.md b/.agents/docs/api-contract.md
+new file mode 100644
+--- /dev/null
++++ b/.agents/docs/api-contract.md
+@@
++# API Boundary
++
++Open this before changing backend routes, frontend API clients, service data shapes, CSV exports, or customer report payloads.
++
++## Code Paths
++
++- `backend/server.ts` owns HTTP routes and response status handling.
++- `services/*.ts` owns synthetic data, business rules, CSV/report generation, and cache behavior.
++- `frontend/src/api/` is the only frontend boundary for backend data.
++- `frontend/src/api/client.ts` is the only frontend file that may call `fetch()`.
++
++## Rules
++
++- Keep the repo synthetic unless the user explicitly asks to connect real systems.
++- Feature components import typed API helpers, not `services/` modules or raw URLs.
++- CSV and report exports must keep explicit, tested fields and escaping.
++- Visibility score payloads may expose display values and precise internal values; round only at the display/export boundary.
++
++## Checks
++
++- API/route change: `npm test`
++- Frontend contract change: `npm run build`
++- Boundary concern: `npm run lint`
+diff --git a/.semgrep/no-raw-fetch.yml b/.semgrep/no-raw-fetch.yml
+new file mode 100644
+--- /dev/null
++++ b/.semgrep/no-raw-fetch.yml
+@@
++rules:
++  - id: no-raw-fetch-outside-api-client
++    message: "Frontend code must use src/api/client.ts instead of raw fetch."
++    severity: ERROR
++    languages: [typescript, javascript]
++    pattern: fetch(...)
++    paths:
++      include:
++        - "frontend/src/**/*.ts"
++        - "frontend/src/**/*.tsx"
++      exclude:
++        - "frontend/src/api/client.ts"
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+@@
+-    "test": "node --import tsx --test services/weak.test.ts services/visibility-service.test.ts"
++    "test": "node --import tsx --test services/weak.test.ts services/visibility-service.test.ts",
++    "lint:boundaries": "tsx tools/lint/check-boundaries.ts",
++    "lint": "npm run lint:boundaries",
++    "scan": "tsx tools/scan/run-semgrep.ts"
+diff --git a/tools/lint/check-boundaries.ts b/tools/lint/check-boundaries.ts
+new file mode 100644
+--- /dev/null
++++ b/tools/lint/check-boundaries.ts
+@@
++import { readFile, readdir } from 'node:fs/promises';
++import path from 'node:path';
++
++const repoRoot = path.resolve(import.meta.dirname, '..', '..');
++const frontendRoot = path.join(repoRoot, 'frontend', 'src');
++
++const violations: string[] = [];
++
++for (const file of await listFiles(frontendRoot)) {
++  const relative = path.relative(repoRoot, file).replaceAll('\\', '/');
++  const source = await readFile(file, 'utf8');
++
++  if (/\bfetch\s*\(/.test(source) && relative !== 'frontend/src/api/client.ts') {
++    violations.push(`${relative}: frontend files must call frontend/src/api/client.ts instead of fetch directly`);
++  }
++}
++
++if (violations.length > 0) {
++  console.error(violations.join('\n'));
++  process.exit(1);
++}
++
++console.log('boundary check passed');
++
++async function listFiles(directory: string): Promise<string[]> {
++  const entries = await readdir(directory, { withFileTypes: true });
++  const files = await Promise.all(
++    entries.map((entry) => {
++      const fullPath = path.join(directory, entry.name);
++      if (entry.isDirectory()) {
++        return listFiles(fullPath);
++      }
++      return fullPath;
++    })
++  );
++
++  return files.flat().filter((file) => /\.(ts|tsx|js|jsx|html)$/.test(file));
++}
+diff --git a/tools/scan/run-semgrep.ts b/tools/scan/run-semgrep.ts
+new file mode 100644
+--- /dev/null
++++ b/tools/scan/run-semgrep.ts
+@@
++import { spawnSync } from 'node:child_process';
++
++const command = process.env.SEMGREP_BIN ?? 'semgrep';
++const args = ['--config', '.semgrep', '--error'];
++
++const result = spawnSync(command, args, {
++  encoding: 'utf8',
++  shell: process.platform === 'win32',
++  stdio: 'pipe'
++});
++
++const missingSemgrep =
++  (result.error && 'code' in result.error && result.error.code === 'ENOENT') ||
++  result.status === 127 ||
++  /not recognized|not found/i.test(result.stderr ?? '');
++
++if (missingSemgrep) {
++  console.warn('semgrep not found; install Semgrep to run the native scan. Running offline scan fallback.');
++  const fallback = spawnSync('npm', ['run', 'lint:boundaries'], {
++    encoding: 'utf8',
++    shell: process.platform === 'win32',
++    stdio: 'inherit'
++  });
++  process.exit(fallback.status ?? 1);
++}
++
++process.stdout.write(result.stdout ?? '');
++process.stderr.write(result.stderr ?? '');
++process.exit(result.status ?? 1);

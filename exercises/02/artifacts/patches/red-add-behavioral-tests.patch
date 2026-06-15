@@ -1,0 +1,64 @@
+diff --git a/.agents/skills/write-tests/SKILL.md b/.agents/skills/write-tests/SKILL.md
+new file mode 100644
+--- /dev/null
++++ b/.agents/skills/write-tests/SKILL.md
+@@
++---
++name: write-tests
++description: Improve weak tests into focused behavioral tests for Profound workshop changes.
++---
++
++# Write Tests
++
++Use this skill when adding or repairing tests for a bug fix, API/export change, scoring change, or customer-facing workflow.
++
++## Rules
++
++- Start from the behavior that failed, not from the implementation detail.
++- Prefer one focused regression test over broad snapshots.
++- Assert the business boundary that matters: precision, allowed export fields, API shape, or human-review routing.
++- Keep tests deterministic and synthetic; do not call real Linear, GitHub, or customer systems.
++- For visibility scoring, prove internal precision is preserved and rounding only happens at display/export boundaries.
++
++## Done
++
++- The old broken behavior would fail the new test.
++- The fixed behavior passes without weakening the assertion.
++- The test name explains the regression risk in plain language.
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+@@
+-    "test": "node --import tsx --test services/weak.test.ts"
++    "test": "node --import tsx --test services/weak.test.ts services/visibility-service.test.ts"
+diff --git a/services/visibility-service.test.ts b/services/visibility-service.test.ts
+new file mode 100644
+--- /dev/null
++++ b/services/visibility-service.test.ts
+@@
++import assert from 'node:assert/strict';
++import { describe, it } from 'node:test';
++
++import { computeVisibilitySnapshot, getVisibilitySnapshot, resetVisibilityCache, updateSignalWeight } from './visibility-service';
++
++describe('visibility cache', () => {
++  it('invalidates cached scores when signal weights change', () => {
++    resetVisibilityCache();
++    const before = getVisibilitySnapshot();
++
++    updateSignalWeight('crawlerCoverage', 0.32);
++    const after = getVisibilitySnapshot();
++
++    assert.notEqual(after.score, before.score);
++  });
++});
++
++describe('visibility scoring precision', () => {
++  it('preserves internal precision until the display boundary', () => {
++    const snapshot = computeVisibilitySnapshot();
++
++    assert.equal(snapshot.score, Math.round(snapshot.preciseScore));
++    assert.notEqual(snapshot.preciseScore, snapshot.score);
++    assert.equal(snapshot.citationScore, Math.round(snapshot.preciseCitationScore));
++  });
++});
