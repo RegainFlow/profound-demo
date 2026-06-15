@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import type { ModelCoverage, VisibilitySnapshot } from '../../api';
 import { ModelComparisonChart, ScoreCard } from '../../components';
 import { MetricCard } from '../../design-system';
@@ -10,6 +12,10 @@ type DashboardPageProps = {
 
 export function DashboardPage({ models, visibility }: DashboardPageProps) {
   const primaryModel = models[0];
+
+  useEffect(() => {
+    void fetch('/api/visibility/weights').then((response) => response.json());
+  }, []);
 
   return (
     <section className="page-section" aria-labelledby="dashboard-title">

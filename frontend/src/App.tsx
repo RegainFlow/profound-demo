@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import {
   citationCsvUrl,
   exportCampaignJSON,
-  getCampaignExport,
   getCampaigns,
   getCitationChanges,
   getCitations,
@@ -88,7 +87,7 @@ export function App() {
       <DashboardPage models={data.models} visibility={data.visibility} />
       <CitationsPage changes={data.changes} citations={data.citations} csvUrl={citationCsvUrl()} />
       <CrawlersPage hits={data.crawlers} />
-      <CampaignsPage campaigns={data.campaigns} exportPreview={getCampaignExport} exportUrl={exportCampaignJSON} />
+      <CampaignsPage campaigns={data.campaigns} exportUrl={exportCampaignJSON} />
     </main>
   );
 }

@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-
-import type { Campaign, CampaignExportPayload } from '../../api';
+import type { Campaign } from '../../api';
 import { ExportButton, HumanReviewBadge } from '../../components';
 import { Card, Table } from '../../design-system';
 import { CampaignDetail } from './CampaignDetail';
@@ -8,43 +6,11 @@ import { ReportPreview } from './ReportPreview';
 
 type CampaignsPageProps = {
   campaigns: Campaign[];
-  exportPreview: (id: string) => Promise<CampaignExportPayload>;
   exportUrl: (id: string) => string;
 };
 
-export function CampaignsPage({ campaigns, exportPreview, exportUrl }: CampaignsPageProps) {
-  const customerFacing =
-    campaigns.find((campaign) => campaign.reportTone === 'customer-facing' && campaign.riskTier === 'human-mandatory') ??
-    campaigns.find((campaign) => campaign.reportTone === 'customer-facing') ??
-    campaigns[0];
-  const [preview, setPreview] = useState<CampaignExportPayload | null>(null);
-
-  useEffect(() => {
-    let active = true;
-
-    if (!customerFacing) {
-      setPreview(null);
-      return () => {
-        active = false;
-      };
-    }
-
-    exportPreview(customerFacing.id)
-      .then((payload) => {
-        if (active) {
-          setPreview(payload);
-        }
-      })
-      .catch(() => {
-        if (active) {
-          setPreview(null);
-        }
-      });
-
-    return () => {
-      active = false;
-    };
-  }, [customerFacing, exportPreview]);
+export function CampaignsPage({ campaigns, exportUrl }: CampaignsPageProps) {
+  const customerFacing = campaigns.find((campaign) => campaign.reportTone === 'customer-facing') ?? campaigns[0];
 
   return (
     <section className="page-section" aria-labelledby="campaigns-title">
@@ -72,7 +38,7 @@ export function CampaignsPage({ campaigns, exportPreview, exportUrl }: Campaigns
         {customerFacing ? <CampaignDetail campaign={customerFacing} /> : null}
       </div>
 
-      {customerFacing ? <ReportPreview campaign={customerFacing} preview={preview} /> : null}
+      {customerFacing ? <ReportPreview campaign={customerFacing} /> : null}
     </section>
   );
 }

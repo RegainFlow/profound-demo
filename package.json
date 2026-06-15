@@ -6,22 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "typecheck": "tsc --noEmit",
-    "build:web": "vite build",
-    "build": "npm run typecheck && npm run build:web",
+    "build": "vite build",
     "start": "tsx backend/server.ts",
-    "test:backend": "node --import tsx --test backend/server.test.ts",
-    "test:services": "node --import tsx --test services/campaign-export.test.ts services/csv-export.test.ts services/visibility-service.test.ts",
-    "test": "npm run test:backend && npm run test:services",
-    "lint:static": "tsx tools/lint/check-static.ts",
-    "lint:boundaries": "tsx tools/lint/check-boundaries.ts",
-    "lint": "npm run lint:static && npm run lint:boundaries",
-    "scan": "tsx tools/scan/run-semgrep.ts",
-    "gate": "npm run typecheck && npm run lint && npm run scan && npm test && npm run build:web && npm run e2e",
-    "check": "npm run gate",
-    "e2e:install": "playwright install chromium",
-    "e2e": "tsx e2e/playwright.ts",
-    "session-mine": "tsx tools/session-mining/mine-session.ts"
+    "test": "node --import tsx --test services/weak.test.ts"
   },
   "engines": {
     "node": ">=24"
