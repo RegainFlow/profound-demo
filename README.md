@@ -23,11 +23,9 @@ Linear tickets and PR/task digests are prepared in Linear/Codex directly for the
 
 ## Workshop Flow
 
-- `.agents/docs/workshop-runbook.md` is the delivery script.
 - `exercises/` contains demo-stage acceptance artifacts: known bug, known fix, harness lesson, changed artifacts, and commands.
-- `.agents/docs/codex-surface-map.md` maps each demo to Codex surfaces.
-- `.agents/docs/` contains the short operating docs that AGENTS.md routes agents to while they work.
-- `.agents/docs/merge-gate.md` explains the local gate.
+- `.agents/docs/` contains only the short operating docs that AGENTS.md routes agents to while they work.
+- GitHub Actions, local scripts, and Semgrep show how the harness grows from weak checks into a full gate.
 
 ## Local Verification
 

@@ -4,9 +4,8 @@ Expected outcome:
 
 - `npm run gate` passes.
 - Browser or HTTP E2E proof verifies the product app renders the JSON report preview.
-- Review policy names human-mandatory categories.
 - Customer-facing report preview remains visibly routed to human review.
-- `exercises/05/artifacts/` mirrors the gate and review policy artifacts.
+- `exercises/05/artifacts/` mirrors the gate, brand, and PR artifacts.
 
 Verification:
 
