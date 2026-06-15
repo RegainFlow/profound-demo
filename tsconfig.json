@@ -13,7 +13,7 @@
     "noUncheckedIndexedAccess": true,
     "strict": true,
     "target": "ES2022",
-    "types": ["vite/client"]
+    "types": ["node", "vite/client"]
   },
-  "include": ["frontend/src"]
+  "include": ["backend", "e2e", "frontend/src", "services", "tools"]
 }

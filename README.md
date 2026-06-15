@@ -23,11 +23,11 @@ Linear tickets and PR/task digests are prepared in Linear/Codex directly for the
 
 ## Workshop Flow
 
-- `docs/workshop-runbook.md` is the 2-hour delivery script.
+- `.agents/docs/workshop-runbook.md` is the delivery script.
 - `exercises/` contains demo-stage acceptance artifacts: known bug, known fix, harness lesson, changed artifacts, and commands.
-- `docs/codex-surface-map.md` maps each demo to Codex surfaces.
-- `docs/merge-gate.md` explains the five-layer gate.
-- `docs/agent-native-codebase.md` explains AGENTS.md, skills, hooks, docs, and session mining.
+- `.agents/docs/codex-surface-map.md` maps each demo to Codex surfaces.
+- `.agents/docs/` contains the short operating docs that AGENTS.md routes agents to while they work.
+- `.agents/docs/merge-gate.md` explains the local gate.
 
 ## Local Verification
 
@@ -37,7 +37,7 @@ npm run gate
 
 The gate runs static policy checks, boundary checks, Node tests, and an E2E smoke check. If Playwright is installed, `npm run e2e` uses a real browser; otherwise it falls back to HTTP checks so the workshop is still runnable offline.
 
-The repo is shaped like a small monorepo for the workshop: `frontend/` is the Vite React app, `backend/` serves the synthetic API and built app, and `services/` owns deterministic business rules/data. `frontend/src/api/` is the only frontend backend contract, and `frontend/src/design-system/` owns reusable brand primitives.
+The repo is shaped like a small monorepo for the workshop: `frontend/` is the Vite React app, `backend/` serves the synthetic API and built app, and `services/` owns deterministic business rules/data. `frontend/src/api/` is the only frontend backend contract, and `frontend/src/design-system/` owns reusable brand primitives. The code-facing rules for those boundaries live in `.agents/docs/`.
 
 ## Leave-Behind Kit
 

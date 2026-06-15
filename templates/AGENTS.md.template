@@ -24,4 +24,4 @@ npm run e2e
 
 - Put only rules that apply to most work in this directory here.
 - Move reusable procedures to skills.
-- Move human background material to docs.
+- Move agent-operating context to `.agents/docs/`; delete background material that agents do not need.

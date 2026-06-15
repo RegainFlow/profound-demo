@@ -12,6 +12,6 @@ Turn this repeated PR comment into a deterministic local check. Prefer the exist
 
 Expected artifact:
 
-- A boundary check in `tools/lint/check-boundaries.mjs`.
+- A boundary check in `tools/lint/check-boundaries.ts`.
 - A frontend AGENTS.md instruction explaining the behavior.
 - One violating example used only in tests or docs, not in app code.
