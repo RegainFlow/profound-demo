@@ -1,0 +1,10 @@
+rules:
+  - id: no-inline-styles-in-feature-ui
+    message: "Feature UI must use design-system classes instead of inline styles."
+    severity: ERROR
+    languages: [typescript, javascript]
+    pattern: <$TAG style={{...}} ... />
+    paths:
+      include:
+        - "src/components/**/*.tsx"
+        - "src/features/**/*.tsx"

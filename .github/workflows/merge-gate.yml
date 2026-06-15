@@ -1,0 +1,29 @@
+name: merge-gate
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deterministic-gate:
+    name: deterministic gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run e2e
+
+  review-policy:
+    name: review policy reminder
+    runs-on: ubuntu-latest
+    needs: deterministic-gate
+    steps:
+      - run: |
+          echo "Run Codex first-pass review with .agents/skills/first-pass-review/SKILL.md."
+          echo "Humans remain final gate for customer-facing UI, public API, security, data-loss, and design-sensitive work."

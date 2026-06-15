@@ -1,0 +1,8 @@
+# Example Codex hooks configuration.
+# Verify the current Codex hook schema before copying into .codex/config.toml.
+
+[hooks]
+post_task = [
+  "npm test",
+  "npm run lint"
+]

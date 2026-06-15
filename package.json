@@ -1,0 +1,34 @@
+{
+  "name": "profound-codex-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Synthetic Profound-flavored Codex workshop repo: harness engineering, PR gates, skills, hooks, and agent-native context.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "start": "node backend/server.mjs",
+    "test": "node --test backend services",
+    "lint": "node tools/lint/check-static.mjs && node tools/lint/check-boundaries.mjs",
+    "gate": "npm run build && npm run lint && npm test && npm run e2e",
+    "e2e": "node e2e/playwright-optional.mjs",
+    "session-mine": "node tools/session-mining/mine-session.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^6.4.1",
+    "typescript": "^5.9.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
+  }
+}
