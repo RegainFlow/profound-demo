@@ -8,4 +8,6 @@ Red step: apply the test harness changes only. `npm test` should fail against th
 
 Green step: fix `services/visibility-service.ts` and `services/types.ts` so internal precision is preserved and only display/export values are rounded.
 
+Use `artifacts/patches/` to teach the diff. Use `artifacts/full-files/` when you want participants to see or copy the complete files for each step.
+
 Harness lesson: policies become durable when tests prove the behavior they describe.

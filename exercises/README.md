@@ -8,6 +8,7 @@ Structure:
 - `acceptance.md` defines the exact outcome and verification commands.
 - `artifacts/` mirrors the repo files introduced or changed during the lesson.
 - `artifacts/patches/` captures complete red/green diffs when a lesson changes existing files such as `package.json` or source modules.
+- `artifacts/full-files/` provides complete file copies for the red and green steps when that is easier to follow than a patch.
 
 The `artifacts/` tree is intentionally allowed to contain paths such as `.agents/`,
 `.agents/docs/`, `tools/`, and `templates/`. It is not a second source of

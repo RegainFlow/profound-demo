@@ -7,7 +7,7 @@ Expected outcome:
 - Boundary lint catches frontend API bypasses.
 - Semgrep contains the matching no-raw-fetch rule.
 - The existing frontend bypass is fixed through `frontend/src/api/`.
-- `exercises/03/artifacts/` mirrors the boundary, Semgrep, scan-runner, and API-contract artifacts, and `artifacts/patches/` captures the full red/green diff.
+- `exercises/03/artifacts/` mirrors the boundary, Semgrep, scan-runner, and API-contract artifacts, `artifacts/patches/` captures the diff, and `artifacts/full-files/` contains complete red/green replacement files.
 
 Verification:
 

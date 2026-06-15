@@ -6,7 +6,7 @@ Expected outcome:
 - `package.json` runs `services/visibility-service.test.ts`.
 - Visibility scoring tests prove precision is preserved until display/export boundaries.
 - The premature rounding bug is fixed.
-- `exercises/02/artifacts/` mirrors the skill and test artifacts, and `artifacts/patches/` captures the `package.json`, type, and service changes.
+- `exercises/02/artifacts/` mirrors the skill and test artifacts, `artifacts/patches/` captures the diff, and `artifacts/full-files/` contains complete red/green replacement files.
 
 Verification:
 
